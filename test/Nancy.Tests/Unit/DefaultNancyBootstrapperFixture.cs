@@ -1,4 +1,5 @@
-﻿namespace Nancy.Tests.Unit
+﻿#if SYSTEM_CODEDOM
+namespace Nancy.Tests.Unit
 {
     using System.CodeDom.Compiler;
     using System.Collections.Generic;
@@ -159,3 +160,4 @@
     {
     }
 }
+#endif

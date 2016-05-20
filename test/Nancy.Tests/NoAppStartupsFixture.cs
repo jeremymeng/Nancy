@@ -1,4 +1,5 @@
-﻿namespace Nancy.Tests
+﻿#if !CORE  // StackTrace is not fully supported on .NET Core yet (https://github.com/dotnet/corefx/issues/1797)
+namespace Nancy.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -117,3 +118,4 @@
         }
     }
 }
+#endif

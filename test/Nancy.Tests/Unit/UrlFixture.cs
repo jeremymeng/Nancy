@@ -13,7 +13,7 @@
         {
             this.url = new Url();
         }
-        
+
         [Fact]
         public void Should_contain_schema_when_converted_to_string()
         {
@@ -100,7 +100,7 @@
             // Then
             result.ShouldEndWith("https://www.nancyfx.org:1234/base");
         }
-        
+
         [Fact]
         public void Should_append_path_when_converted_to_string()
         {
@@ -235,7 +235,7 @@
             Url result = uri;
 
             // Then
-            result.Scheme.ShouldEqual(Uri.UriSchemeHttp);
+            result.Scheme.ShouldEqual("http");
             result.HostName.ShouldEqual(string.Empty);
             result.Port.ShouldEqual(null);
             result.BasePath.ShouldEqual(string.Empty);
@@ -297,7 +297,7 @@
             url.Path.ShouldEqual("/base");
             url.Query.ShouldEqual("?foo=some%20text");
         }
-        
+
         [Theory]
         [InlineData("https://www.nancyfx.org:1234/base?foo=some%20text", "https", "www.nancyfx.org", 1234, "/base", "?foo=some%20text")]
         [InlineData("http://nancyfx.org", "http", "nancyfx.org", 80, "/", "")]

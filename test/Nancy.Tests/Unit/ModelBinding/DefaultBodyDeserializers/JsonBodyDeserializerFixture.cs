@@ -281,7 +281,7 @@ namespace Nancy.Tests.Unit.ModelBinding.DefaultBodyDeserializers
             Assert.Equal ((uint)6, model.F3);
         }
 
-#if !__MonoCS__
+#if !__MonoCS__ && !CORE
         [Fact]
         public void Should_Serialize_Doubles_In_Different_Cultures()
         {
@@ -376,7 +376,7 @@ namespace Nancy.Tests.Unit.ModelBinding.DefaultBodyDeserializers
                 return other.StringProperty == this.StringProperty &&
                        other.IntProperty == this.IntProperty &&
                        !other.ArrayProperty.Except(this.ArrayProperty).Any() &&
-                       other.DateProperty.ToShortDateString() == this.DateProperty.ToShortDateString();
+                       other.DateProperty.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern) == this.DateProperty.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
             }
 
             public override bool Equals(object obj)

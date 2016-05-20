@@ -36,10 +36,11 @@ namespace Nancy.Tests.Unit
             cookie.ShouldEqual("leto=worm; path=/; expires=Thu, 08-Oct-2015 09:10:11 GMT");
         }
 
+#if !CORE
         [Fact]
         public void Should_stringify_an_expiry_to_english()
         {
-            var originalCulture = Thread.CurrentThread.CurrentCulture;
+            var originalCulture = CultureInfo.CurrentCulture;
             try
             {
                 // Given
@@ -57,6 +58,7 @@ namespace Nancy.Tests.Unit
                 Thread.CurrentThread.CurrentCulture = originalCulture;
             }
         }
+#endif
 
         [Fact]
         public void Should_stringify_a_domain()

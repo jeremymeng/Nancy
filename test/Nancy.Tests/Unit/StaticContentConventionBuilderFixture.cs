@@ -26,7 +26,7 @@
 
         public StaticContentConventionBuilderFixture()
         {
-            this.directory = Environment.CurrentDirectory;
+            this.directory = Directory.GetCurrentDirectory();
             this.environment = new DefaultNancyEnvironment();
             this.environment.StaticContent(safepaths:this.directory);
         }
@@ -263,7 +263,7 @@
                 using (var stream = new MemoryStream())
                 {
                     fileResponse.Contents(stream);
-                    return Encoding.UTF8.GetString(stream.GetBuffer(), 0, (int)stream.Length);
+                    return Encoding.UTF8.GetString(stream.ToArray(), 0, (int)stream.Length);
                 }
             }
 

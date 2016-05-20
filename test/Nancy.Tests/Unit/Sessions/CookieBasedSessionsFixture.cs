@@ -1,3 +1,4 @@
+#if SYSTEM_WEB
 namespace Nancy.Tests.Unit.Sessions
 {
     using System.Collections.Generic;
@@ -522,3 +523,4 @@ namespace Nancy.Tests.Unit.Sessions
         }
     }
 }
+#endif

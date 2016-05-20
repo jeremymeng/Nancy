@@ -5,6 +5,9 @@ namespace Nancy.Tests.Unit.ModelBinding
     using System.Globalization;
     using System.IO;
     using System.Linq;
+#if CORE
+    using System.Reflection;
+#endif
     using System.Text;
     using System.Xml.Serialization;
     using FakeItEasy;

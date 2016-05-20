@@ -1,6 +1,8 @@
 ﻿namespace Nancy.Tests.Unit.Localization
 {
     using System;
+    using System.Reflection;
+
     using FakeItEasy;
 
     using Nancy.Localization;
@@ -14,7 +16,7 @@
         {
             // Given
             var resourceAssemblyProvider = A.Fake<IResourceAssemblyProvider>();
-            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { typeof(NancyEngine).Assembly });
+            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { typeof(NancyEngine).GetTypeInfo().Assembly });
 
             var defaultTextResource = new ResourceBasedTextResource(resourceAssemblyProvider);
             var context = new NancyContext();
@@ -31,7 +33,7 @@
         {
             // Given
             var resourceAssemblyProvider = A.Fake<IResourceAssemblyProvider>();
-            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { this.GetType().Assembly });
+            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { this.GetType().GetTypeInfo().Assembly });
 
             var defaultTextResource = new ResourceBasedTextResource(resourceAssemblyProvider);
             var context = new NancyContext();
@@ -47,11 +49,11 @@
         public void Should_throw_exception_when_multiple_resources_matches_key()
         {
             // Given
-            const string expectedMessage = 
+            const string expectedMessage =
                 "More than one text resources match the Texts key. Try providing a more specific key.";
 
             var resourceAssemblyProvider = A.Fake<IResourceAssemblyProvider>();
-            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { this.GetType().Assembly });
+            A.CallTo(() => resourceAssemblyProvider.GetAssembliesToScan()).Returns(new[] { this.GetType().GetTypeInfo().Assembly });
 
             var defaultTextResource = new ResourceBasedTextResource(resourceAssemblyProvider);
             var context = new NancyContext();

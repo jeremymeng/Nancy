@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+#if CORE
+    using System.Reflection;
+#endif
     using System.Xml.Serialization;
 
     using Nancy.ModelBinding;

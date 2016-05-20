@@ -5,6 +5,9 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+#if CORE
+    using System.Reflection;
+#endif
 
     using Xunit;
 

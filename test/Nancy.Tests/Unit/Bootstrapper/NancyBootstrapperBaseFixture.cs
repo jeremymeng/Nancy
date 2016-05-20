@@ -120,6 +120,7 @@
             A.CallTo(() => startupMock2.Initialize(A<IPipelines>._)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
+#if FAKE_CREATESCOPE  // Fake.CreateScope is no logner supported in FakeItEasy v2.0.
         [Fact]
         public void Should_invoke_startup_tasks_after_registration_tasks()
         {
@@ -143,6 +144,7 @@
                 }
             }
         }
+#endif
 
         [Fact]
         public void Should_register_application_registration_type_registrations_into_container()
@@ -333,7 +335,7 @@
         {
             if (this.ShouldThrowWhenGettingEngine)
             {
-                throw new ApplicationException("Something when wrong when trying to compose the engine.");
+                throw new Exception("Something when wrong when trying to compose the engine.");
             }
 
             return this.FakeNancyEngine;

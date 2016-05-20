@@ -1,6 +1,9 @@
 namespace Nancy.Tests.Unit.ModelBinding
 {
     using System;
+#if CORE
+    using System.Reflection;
+#endif
 
     using FakeItEasy;
     using Nancy.Configuration;

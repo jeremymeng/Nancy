@@ -47,6 +47,7 @@ namespace Nancy.Tests.Unit
             response.StatusCode.ShouldEqual(HttpStatusCode.OK);
         }
 
+#if !CORE // Recommended replacement from ApiPort for XmlNode.SelectSingleNode(): Create one of the XPathNavigator implementations. There are 3 implementations of the CreateNavigator () method in  XPathDocument, System.Xml.XPath.XDocument, and System.Xml.XPath.XmlDocument, use this to find your node.
         [Fact]
         public void Should_return_a_valid_model_in_xml_format()
         {
@@ -62,6 +63,7 @@ namespace Nancy.Tests.Unit
                 root.SelectSingleNode("//Person/LastName").InnerText.ShouldEqual("Pike");
             }
         }
+#endif
 
         [Fact]
         public void Should_return_a_null_in_xml_format()

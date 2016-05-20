@@ -3,6 +3,9 @@
     using Nancy.Diagnostics;
     using System.Collections.Generic;
     using System.Linq;
+#if CORE
+    using System.Reflection;
+#endif
     using Xunit;
 
     public class InteractiveDiagnosticsFixture
